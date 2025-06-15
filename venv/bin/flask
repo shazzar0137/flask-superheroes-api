@@ -1,4 +1,4 @@
-#!/home/daniel/code/phase-4/flask-superheroes-api/venv/bin/python3
+#!/home/daniel/code/phase-4/flask-superheroes-api/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
