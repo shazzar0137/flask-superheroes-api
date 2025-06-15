@@ -1,6 +1,70 @@
 from flask import request, jsonify
 from app import app, db
 from app.models import Hero, Power, HeroPower
+from flask import make_response
+
+@app.route('/')
+def index():
+    html_content = """
+    <html>
+    <head>
+        <title>Superhero Powers API</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                padding: 40px;
+                color: #333;
+            }
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                background-color: #fff;
+                padding: 30px;
+                border-radius: 8px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+            h1 {
+                color: #2c3e50;
+                text-align: center;
+            }
+            p {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+            ul {
+                margin-top: 20px;
+            }
+            li {
+                margin-bottom: 10px;
+            }
+            code {
+                background-color: #eee;
+                padding: 2px 5px;
+                border-radius: 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🦸‍♀️ Welcome to the Superhero Powers API 🦸‍♂️</h1>
+            <p>This is a Flask-based RESTful API for tracking superheroes and their superpowers.</p>
+            <p>Use the endpoints below to explore the API via Postman or a browser:</p>
+            <ul>
+                <li><code>GET /heroes</code> - List all heroes</li>
+                <li><code>GET /heroes/&lt;id&gt;</code> - Get a specific hero and their powers</li>
+                <li><code>GET /powers</code> - List all powers</li>
+                <li><code>GET /powers/&lt;id&gt;</code> - Get a specific power</li>
+                <li><code>PATCH /powers/&lt;id&gt;</code> - Update a power (use Postman)</li>
+                <li><code>POST /hero_powers</code> - Create a hero power relationship (use Postman)</li>
+            </ul>
+            <p>Open Postman and import the provided collection to test these endpoints.</p>
+        </div>
+    </body>
+    </html>
+    """
+    return make_response(html_content, 200)
+
 
 @app.route("/heroes")
 def get_heroes():
